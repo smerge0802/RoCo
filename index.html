@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoVo</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* 전체 컨테이너 스타일 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+        }
+
+        /* 제목 섹션 스타일 */
+        .title {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #ddd;
+        }
+        .title h1 {
+            margin-bottom: 10px;
+        }
+
+        /* Abstract 섹션 스타일 */
+        .abstract-section {
+            background-color: #fff; /* 연한 회색 배경 */
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px; /* 모서리 둥글게 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 진한 그림자 */
+        }
+        .abstract-section h2 {
+            text-align: center; /* 제목 가운데 정렬 */
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #444;
+        }
+        .abstract-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333; /* 텍스트 색상 */
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+        .abstract-section .dropcap {
+            float: left;
+            font-size: 3rem; /* 강조된 첫 글자의 크기 */
+            font-weight: bold;
+            margin-right: 10px; /* 텍스트와 간격 */
+            line-height: 1; /* 글자 높이 조정 */
+            color: #000; /* 첫 글자 검정색 */
+        }
+
+        /* 각 섹션 스타일 */
+        .section {
+            margin: 60px 0; /* 섹션 사이 여백 */
+            padding: 20px;
+            background-color: #fff; /* 배경색 흰색 */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 진한 그림자 */
+        }
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #444;
+        }
+        .section p {
+            margin: 4px;
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #555;
+            text-align: left;
+        }
+
+        /* 테이블 스타일 */
+        .audio-samples {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse; /* 셀 간격 제거 */
+        }
+        .audio-samples thead th {
+            font-weight: bold;
+            padding: 15px;
+        }
+        .audio-samples thead {
+            border-bottom: 2px solid #000; /* 진한 검정색 구분선 */
+        }
+        .audio-samples tbody tr {
+            border-bottom: 1px solid #e0e0e0; /* 연한 회색 행 구분선 */
+            transition: background-color 0.3s; /* 부드러운 전환 효과 */
+        }
+        .audio-samples tbody tr:last-child {
+            border-bottom: none; /* 마지막 행 구분선 제거 */
+        }
+        .audio-samples tbody tr:hover {
+            background-color: #f0f0f0; /* 연한 회색 배경색 */
+        }
+        .audio-samples th:first-child,
+        .audio-samples td:first-child {
+            width: 50%; /* Type 열 */
+        }
+        .audio-samples th:nth-child(2),
+        .audio-samples td:nth-child(2),
+        .audio-samples th:nth-child(3),
+        .audio-samples td:nth-child(3) {
+            width: 25%; /* Real Audio와 Defense Audio 열 */
+        }
+        .audio-samples tbody tr td {
+            padding: 20px 15px; /* 행 높이를 위해 내부 여백 조정 */
+        }
+        .section img {
+            display: block;
+            max-width: 100%; /* 섹션 너비에 맞게 조정 */
+            height: auto; /* 이미지 비율 유지 */
+            margin: 0 auto; /* 중앙 정렬 */
+        }
+        .audio-player {
+            display: block;
+            width: 100%; /* 모든 오디오 플레이어 동일한 크기 */
+            max-width: 200px; /* 최대 너비 지정 */
+            margin: 0 auto; /* 중앙 정렬 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Title Section -->
+        <div class="title">
+            <h1>RoVo: Robust Voice Protection Against Unauthorized Speech Synthesis with Embedding-Level Perturbations</h1>
+        </div>
+
+        <!-- Abstract Section -->
+        <div class="abstract-section">
+            <h2>Abstract</h2>
+            <p>
+                <span class="dropcap">W</span>
+                ith the advancement of AI-based speech synthesis technologies such as Deep Voice, the risk of voice spoofing attacks —such as voice phishing and fake news through unauthorized use of others' voices— is increasing significantly. Existing defenses that inject adversarial perturbations directly into audio signals show limited effectiveness, as these perturbations are easily neutralized by speech enhancement techniques. To address this limitation, we propose RoVo (Robust Voice), a novel proactive defense method that injects adversarial perturbations into high-dimensional embedding vectors of audio signals, subsequently reconstructing them into protected speech. This approach effectively mitigates speech synthesis attacks and demonstrates strong resilience even against speech enhancement models, which represent a secondary threat.<br>
+                ㅤIn extensive experiments, RoVo improved the Defense Success Rate (DSR) by more than 70% compared to unprotected speech, consistently across four state-of-the-art speech synthesis models. Notably, RoVo achieved a DSR of up to 99.5% against a commercial speaker-verification API, effectively neutralizing speech synthesis attacks. Furthermore, RoVo's perturbations remained robust under strong speech enhancement conditions, clearly outperforming traditional methods. A user study further confirmed that RoVo maintains both the naturalness and usability of protected speech, underscoring its effectiveness in complex and evolving threat scenarios.
+            </p>
+        </div>
+
+        <!-- Model Overview Section -->
+        <div class="section">
+            <h2>Model Overview</h2>
+            <img src="https://www.dropbox.com/scl/fi/ylzox1n7v9lxkfk30xd1u/1.png?rlkey=189p9xx4ak120zu93j1qbt1wr&st=g3hs5msl&raw=1" alt="Model Overview Image">
+            <p>
+                ㅤOverview of the proposed adversarial embedding defense mechanism. The system protects against unauthorized voice synthesis and downstream misuse such as vishing, fake news, and fraudulent verification, even in the presence of noise removal or speech enhancement techniques.
+            </p>
+            <p>
+                ㅤThe architecture of RoVo, the proposed voice protection framework. RoVo applies adversarial perturbations directly to the embedding space generated by the Neural Codec Encoder. The perturbed embeddings are processed by the Neural Codec Decoder to reconstruct the protected voice while maintaining naturalness.
+            </p>
+        </div>
+
+        <!-- AVC1 Samples Section -->
+        <div class="section">
+            <h2>AVC Samples</h2>
+            <table class="audio-samples">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Real voice</th>
+                        <th>Defense voice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Defended voice compared with real voice</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/0ejan4puprcl5clcua7ai/RA.wav?rlkey=onha8qs6l8a62sz8hsw31p3ql&st=e9raqcwe&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/7tjfuusmynl5py82ejb0w/ADA.wav?rlkey=bkn9lfohx69aamt624omaai5r&st=4hzx9xek&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Fake voice generated using defended audio</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/txiw3ei72iuqzri40lpk9/RA.wav?rlkey=it0ua8m9p35nublxwtrpynid7&st=xh6y1s4z&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/rpel3ez80embh8jqagwk0/AFDA.wav?rlkey=mxvu4ljyz5byf8z0zumz4b1b6&st=lb9mfrko&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Defended voice after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/foveitkewpwidadn4i4jr/RA.wav?rlkey=0z6vin6b1pfwnjrj2bwuymgon&st=0ue4pero&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/8pf01v2x5dof1l3m0vk8e/ADA-SE.wav?rlkey=ctwoqq7zmy7o93354bslf1ex3&st=w3hmxlue&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td> Fake voice generated after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/fz39l0xn6le2tmj95qauk/RA.wav?rlkey=v5d8a97628fuuv9xe5umn6zcg&st=x9kgf1v9&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/tsdcydoesrmj98oyoq72r/ARDA-SE.wav?rlkey=uy7re8f3p46ltsp6mjm21zjbd&st=vgift3ea&raw=1"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- AVC2 Samples Section -->
+        <div class="section">
+            <h2>AVC Samples</h2>
+            <table class="audio-samples">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Real voice</th>
+                        <th>Defense voice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Defended voice compared with real voice</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/39u3yieqe4lci8dbetzeu/RA.wav?rlkey=ll78luiv4kvhcjkor5drnsgzs&st=odwwd3em&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/tavxlwnz6s2nltscvpooh/ADA.wav?rlkey=5g9gb6cxay2rz7om9qu4pqg3j&st=v8wxphhd&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Fake voice generated using defended audio</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/7o6wasxo2728hqtkrlhbm/RA.wav?rlkey=ri6hiv1zh9u0whj6ujx1874qu&st=e6yilo60&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/jcam6m37ozpf555fp5b8o/AFDA.wav?rlkey=goqocrwxs60nx77s86cpnwn7r&st=of3dgdef&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Defended voice after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/1p2yxslw7k8ret9duwmzv/RA.wav?rlkey=ce7rhvpt9ik195yzsxktgjvjk&st=fc5nbefi&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/y1szvfnk2uwitwe582dgh/ADA-SE.wav?rlkey=jwexmjb2gvkagaf2ct9hwkdhq&st=nf7wm2pf&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td> Fake voice generated after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/mwx8wj5a449c4eds6q95n/RA.wav?rlkey=loncjnugwfdrkgwrvfhwdqcnv&st=08fjfdx9&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/yjgxbqvrpnn86cnx176cd/AFDA-SE.wav?rlkey=mkk8208dy057gvmo60zwdobg8&st=dz6fereb&raw=1"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RTVC1 Samples Section -->
+        <div class="section">
+            <h2>RTVC Samples</h2>
+            <table class="audio-samples">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Real voice</th>
+                        <th>Defense voice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Defended voice compared with real voice</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/ev07wxsym41d8hn73es8v/RA.wav?rlkey=3cy1nsqhx98owz8byx66bu3xa&st=sph7mq03&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/rd5yhmj3snjkcc33323mv/ADA.wav?rlkey=ildkzjakdx8tsj6glp707cwmr&st=t7ure188&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Fake voice generated using defended audio</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/sra5t4h0112jb1c22tw3f/RA.wav?rlkey=4qxy1wopd12vqxq1fcvbqf7dj&st=y6fbscda&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/e5b9bgmgmfm9p9f1lt2qw/AFDA.wav?rlkey=f07dr14r2vlfw499reked0c7w&st=veun3pnw&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Defended voice after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/dpfvzagi74pd1r4aph8w0/RA.wav?rlkey=dhim57k9xkbwywmrextg18pzx&st=2m7rq76l&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/0htams1wn6emjm36kcvbr/ADA-SE.wav?rlkey=qefwa0k8hova6jxnr7v4h78v1&st=vvh00zni&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td> Fake voice generated after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/f9rm45sv2nds5tyrfme0r/RA.wav?rlkey=g3zf44wy9la3p8vye0vuphvrh&st=2vmou6kw&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/t7p6frvtxh3vap0wg9zds/AFDA_SE.wav?rlkey=w1xaq161xmp1hys69bafjx57y&st=p0j32c8c&raw=1"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+                    <p style="color: #555; margin-top: 20px;">
+                        * Fake voice generated after speech enhancement demonstrates that the applied noise reduction and defense techniques successfully hindered the realistic generation of fake audio.
+                    </p>
+        </div>
+
+        <!-- RTVC2 Samples Section -->
+        <div class="section">
+            <h2>RTVC Samples</h2>
+            <table class="audio-samples">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Real voice</th>
+                        <th>Defense voice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Defended voice compared with real voice</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/5uanstenksp9ovgdr182l/RA.wav?rlkey=z133hdnmlv66bivuvcvoq131w&st=cnn2kua3&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/ynt98627ng9k91es5yirn/ADA.wav?rlkey=88pht6npn6uzc9w1aa2mmyaq2&st=l3260jbz&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Fake voice generated using defended audio</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/xs0k1bl5h4obm34gnc78x/RA.wav?rlkey=819a6w09ihtrjd0v94jnw3s84&st=08jqkiz2&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/ugj3r7ycziq5dhdab0bht/AFDA.wav?rlkey=gx7cit9lxxtzpm7tyvli6rh4j&st=wygkrkle&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Defended voice after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/cjmmvpss8fkb55vd7z05d/RA.wav?rlkey=7yr8idoskmmbur3o6pvpgya63&st=s83drow4&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/x90dggly0xrmfv8ci6bdg/ADA-SE.wav?rlkey=yjp6upgvn0zjp53fwhkm98d64&st=rdlztgi6&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td> Fake voice generated after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/q3shx20x8unya0ztsamck/RA_6.wav?rlkey=56leahwqynsyaja466w26jdvb&st=bofx2bky&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/0tr4bav9hnaaipxqnzvhs/AFDA-SE.wav?rlkey=gi3cecu76xtwaj1kpz7axpnyi&st=edrj3hrd&raw=1"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- YourTTS Samples Section -->
+        <div class="section">
+            <h2>YourTTS Samples</h2>
+            <table class="audio-samples">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Real voice</th>
+                        <th>Defense voice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Defended voice compared with real voice</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/z4g9rlaqiwc17mavw9t8s/RA.wav?rlkey=ccu4xk9udkfi8mn9ma78bsf14&st=ozn018ke&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/e4frap0i9ku15s1xcka3g/ADA.wav?rlkey=1r5j0oslut5ucc2xnbasazj86&st=34fnpipn&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Fake voice generated using defended audio</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/wwq2t8dthyo6g51bte4jo/RA.wav?rlkey=ynve3ii4up0nuskyf6a3q9zil&st=eu97oe58&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/5vrmn0rm7vxyweflotkpj/ARA_FDA.wav?rlkey=kk03x6lhof28fu5md0jc2un9w&st=7mxpz2nj&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Defended voice after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/5zcqioup5gcv630utoi3m/RA.wav?rlkey=c9rr0e61xmwm8owq5dkumhklk&st=u10sa8d2&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/r2a0qp7w6h0hmoyxguwn4/ADA-SE.wav?rlkey=ho5f61za5j14rz7gelwme6uwz&st=64a2brei&raw=1"></audio></td>
+                    </tr>
+                    <tr>
+                        <td> Fake voice generated after speech enhancement</td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/w95tdk93fbc21li3u0usl/RA.wav?rlkey=6btwt2tka9gydyorx3fl651j9&st=qv4qqy3y&raw=1"></audio></td>
+                        <td><audio controls class="audio-player"><source src="https://www.dropbox.com/scl/fi/rksdpcmkgo16eu6ktohzz/AFDA-SE.wav?rlkey=sdv5ov6lwbf80xzjppncwufia&st=zj489gqx&raw=1"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
